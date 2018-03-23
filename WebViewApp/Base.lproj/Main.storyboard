@@ -1,24 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cyt-4M-YhX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Oh1-Uz-9Z6"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDj-br-12K">
+                                <rect key="frame" x="0.0" y="56" width="375" height="567"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYJ-nE-Kue">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="stop" id="QaH-7z-cLe">
+                                        <connections>
+                                            <action selector="stopLoading" destination="cDj-br-12K" id="8Ps-rX-aAf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="Gsa-pN-nSS">
+                                        <connections>
+                                            <action selector="reload" destination="cDj-br-12K" id="mab-OG-Ohk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="o74-mh-yK8"/>
+                                    <barButtonItem systemItem="rewind" id="utU-iG-ZON">
+                                        <connections>
+                                            <action selector="goBack" destination="cDj-br-12K" id="WQB-NT-w21"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="fastForward" id="0ul-a2-b90">
+                                        <connections>
+                                            <action selector="goForward" destination="cDj-br-12K" id="G3B-Bb-Uw4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-bV-vWL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mnB-c3-yF5"/>
+                                </connections>
+                            </searchBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="050-7R-hJp">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.73785942550000005" green="0.1094702513" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="vYJ-nE-Kue" firstAttribute="top" secondItem="cDj-br-12K" secondAttribute="bottom" id="6Gu-C6-9mH"/>
+                            <constraint firstItem="cDj-br-12K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BGU-Q9-ueg"/>
+                            <constraint firstAttribute="bottom" secondItem="vYJ-nE-Kue" secondAttribute="bottom" id="HfK-Lp-V3R"/>
+                            <constraint firstItem="vYJ-nE-Kue" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NEB-F1-dze"/>
+                            <constraint firstAttribute="trailing" secondItem="vYJ-nE-Kue" secondAttribute="trailing" id="TpF-QH-CoE"/>
+                            <constraint firstItem="rsz-bV-vWL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fFz-vV-Koe"/>
+                            <constraint firstItem="050-7R-hJp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iwe-J4-H3Q"/>
+                            <constraint firstItem="050-7R-hJp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nGB-4r-gTU"/>
+                            <constraint firstItem="rsz-bV-vWL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nvh-V3-6d0"/>
+                            <constraint firstAttribute="trailing" secondItem="cDj-br-12K" secondAttribute="trailing" id="o2G-PZ-7JI"/>
+                            <constraint firstAttribute="trailing" secondItem="rsz-bV-vWL" secondAttribute="trailing" id="xAE-T6-5km"/>
+                            <constraint firstItem="cDj-br-12K" firstAttribute="top" secondItem="rsz-bV-vWL" secondAttribute="bottom" id="xoY-Sb-sJ8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actInd" destination="050-7R-hJp" id="ZbP-v3-ZIq"/>
+                        <outlet property="searchBar" destination="rsz-bV-vWL" id="A1K-fa-hcK"/>
+                        <outlet property="webView" destination="cDj-br-12K" id="JgS-GR-mQG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
